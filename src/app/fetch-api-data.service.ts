@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 //task 6.2
-import { catchError } from 'rxjs/internal/operators';
+import { catchError } from 'rxjs/operators';//changed from 'rxjs/internal/operators' 
 import {
   HttpClient,
   HttpHeaders,
@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl =
-  'mongodb+srv://alexclantz:lan9tern56@lantzdevdb.pv1bqez.mongodb.net/myFlixDB?retryWrites=true&w=majority';
+  'https://movie-api-project24-2fb853d4fde0.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root',
@@ -38,6 +38,8 @@ export class FetchApiDataService {
     const body = res;
     return body || {};
   }
+
+  //----------------- ENDPOINTS ----------------------------------------------------------
 
   //Post, user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
