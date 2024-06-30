@@ -1,0 +1,17 @@
+// $primary-color: #519872;
+// $secondary-color: darken($primary-color, 20%);
+
+img {
+  width: 350px;
+  border-radius: 2%;
+}
+
+
+.card {
+  flex: 1 1 auto;
+  padding: 10px;
+  margin: 10px;
+  border: solid #000 1px;
+  background-color: #f2f4f6;
+}
+
