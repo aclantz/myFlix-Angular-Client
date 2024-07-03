@@ -141,15 +141,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  //-------------------------------------------------------------------------------
   //Put Edit Users Endpoint
-  public putUserUpdate(userName: string): Observable<any> {
+  public putUserUpdate(userData: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .put(apiUrl + 'users/' + userName, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        }),
-      })
+      .put(apiUrl + 'users/' + userData.username, userData)
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 

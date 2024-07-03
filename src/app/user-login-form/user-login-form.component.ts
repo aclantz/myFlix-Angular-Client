@@ -30,6 +30,7 @@ loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       localStorage.setItem('user', result.user.username);
       localStorage.setItem('token', result.token);
+      localStorage.setItem('userInfo', JSON.stringify(result.user));
 
      this.dialogRef.close(); // This will close the modal on success!
      console.log(result);
