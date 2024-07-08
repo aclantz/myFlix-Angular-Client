@@ -78,6 +78,7 @@ export class MovieCardComponent {
     });
   }
 
+  //working on this function. 
   modifyFavoriteMovies(movie: any): void {
     let userInfo = JSON.parse(localStorage.getItem("userInfo") || "");
     let icon = document.getElementById(`${movie._id}-favorite-icon`);
