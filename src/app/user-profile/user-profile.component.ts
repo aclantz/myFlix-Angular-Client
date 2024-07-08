@@ -21,16 +21,16 @@ export class UserProfileComponent {
   ) {}
   ngOnInit(): void {
     this.User = this.getUserInfo();
-    
   }
 
+  // Edit profile function
   openUpdateUserDialog(): void {
     this.dialog.open(UpdateUserFormComponent, {
       width: '280px',
     });
   }
 
-  //get user data from local storage
+  // Get user data from local storage
   getUserInfo() {
     let userInfo = JSON.parse(localStorage.getItem('userInfo') || " ");
     console.log('getUserInfo return ->', userInfo);

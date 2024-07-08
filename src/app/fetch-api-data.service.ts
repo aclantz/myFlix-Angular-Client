@@ -137,11 +137,11 @@ export class FetchApiDataService {
     const userName = localStorage.getItem('user');
     console.log('del favMovie test ->', {userName, token});
     return this.http
-      .delete(apiUrl + 'users/' + userName + '/movies/' + movieID) //{
-      //   headers: new HttpHeaders({
-      //     Authorization: 'Bearer ' + token,
-      //   }),
-      // })
+      .delete(apiUrl + 'users/' + userName + '/movies/' + movieID, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
