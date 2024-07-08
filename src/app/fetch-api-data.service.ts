@@ -118,10 +118,12 @@ export class FetchApiDataService {
   }
 
   //Put add Favorite Movies Endpoint
-  public putFavMovies(userName: string, movieID: string): Observable<any> {
+  public putFavMovies(movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const userName = localStorage.getItem('user');
+    console.log('add favMovie test ->', {userName, token});
     return this.http
-      .put(apiUrl + 'users/' + userName + 'movies/' + movieID, {
+      .put(apiUrl + 'users/' + userName + '/movies/' + movieID, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -130,14 +132,16 @@ export class FetchApiDataService {
   }
 
   //Delete remove from Favorite Movies Endpoint
-  public deleteFavMovies(userName: string, movieID: string): Observable<any> {
+  public deleteFavMovies(movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const userName = localStorage.getItem('user');
+    console.log('del favMovie test ->', {userName, token});
     return this.http
-      .delete(apiUrl + 'users/' + userName + 'movies/' + movieID, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        }),
-      })
+      .delete(apiUrl + 'users/' + userName + '/movies/' + movieID) //{
+      //   headers: new HttpHeaders({
+      //     Authorization: 'Bearer ' + token,
+      //   }),
+      // })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
@@ -145,8 +149,15 @@ export class FetchApiDataService {
   //Put Edit Users Endpoint
   public putUserUpdate(userData: any): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    console.log('test ->', {user, token});
+
     return this.http
-      .put(apiUrl + 'users/' + userData.username, userData)
+      .put(apiUrl + 'users/' + user, userData,{
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 

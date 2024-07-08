@@ -1,29 +1,32 @@
 <div>
   <nav>
-    <button mat-button (click)="(movieRoute)">Movies</button>
-    <button mat-button (click)="(userLogout)">Logout</button>
+    <button mat-button (click)="(movieRoute())">Movies</button>
+    <button mat-button (click)="(userLogout())">Logout</button>
   </nav>
-<div style="display: flex;">
+<div class="container">
   <mat-card class="card">
       <mat-card-header>
       <mat-card-title color="primary">Your Profile</mat-card-title>
       </mat-card-header>
       <mat-card-actions>
-          <!-- <p><strong>Username:</strong> {{User.username}}</p>
-          <p><strong>Email:</strong> {{User.email}}</p>
-          <p><strong>Birthday:</strong> {{User.Birthday}}</p> -->
-          <br>
+        <ul>
+          <li>Username: {{ User?.username }}</li>
+          <li>Email: {{ User?.email }}</li>
+          <li>Birthday: {{ User?.birthday | date:'longDate'}}</li>
+        </ul>
+        <hr>
           <button
-              mat-button
-              color="primary"
+              mat-flat-button
+              color="secondary"
+              (click)="openUpdateUserDialog()"
           >
               Edit Profile
           </button>
-          <mat-icon>favorite_border</mat-icon>
       </mat-card-actions>
   </mat-card>
   <mat-card class="card">
     <h3>Favorite movies</h3>
+    <p>On its way soon!</p>
   </mat-card>
 </div>
 </div>
