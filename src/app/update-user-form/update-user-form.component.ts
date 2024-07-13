@@ -29,11 +29,13 @@ export class UpdateUserFormComponent implements OnInit {
 
        this.dialogRef.close(); // This will close the modal on success!
        console.log(result);
+       
        this.snackBar.open('user update successful', 'OK', {
           duration: 2000
        });
       }, (result) => {
         console.log(result);
+        localStorage.setItem('userInfo', JSON.stringify(result.user));
         this.snackBar.open(result, 'OK', {
           duration: 2000
         });
