@@ -22,7 +22,13 @@ constructor(
 ngOnInit(): void {
 }
 
-// This is the function responsible for sending the form inputs to the backend
+/**
+ * Register user function
+ * fetchApiData.userRegistration
+ * @remarks sends form inputs to backend and create new User
+ * @param {object} this.userData
+ * @returns success or error message
+ */
 registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
   // Logic for a successful user registration goes here! (To be implemented)

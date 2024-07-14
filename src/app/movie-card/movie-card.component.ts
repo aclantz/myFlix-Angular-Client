@@ -4,10 +4,6 @@ import { Router } from '@angular/router';
 import { MovieInfoComponent } from '../movie-info/movie-info.component';
 // Material 
 import { MatDialog } from '@angular/material/dialog';
-import {MDCIconButtonToggle} from '@material/icon-button';
-
-
-
 
 @Component({
   selector: 'app-movie-card',
@@ -27,10 +23,21 @@ export class MovieCardComponent {
     this.getMovies();
   }
 
+  /**
+   * Retrieve Movies Function
+   * fetchAPIData.getAllMovies
+   * @remarks function called to retrieve all movies and their data for movie-card display
+   * @return {array} movies array
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-
+      /**
+       * isFavorite function
+       * @remarks a way to define user favoriteMovies to display and save
+       * @param {string} movie._id
+       * @return isFavorite
+       */
       let user = JSON.parse(localStorage.getItem("userInfo") || "");
             this.movies.forEach((movie: any) => {
                 movie.isFavorite = user.favoritemovies.includes(movie._id);
@@ -40,16 +47,29 @@ export class MovieCardComponent {
     });
   }
 
-  //Nav functions
+  /**
+   * User Logout
+   * Nav function
+   */
   userLogout(): void {
     this.router.navigate(['welcome']);
     localStorage.removeItem('user');
   }
+  /**
+   * Profile Route
+   * Nav Function 
+   */
   profileRoute(): void {
     this.router.navigate(["profile"]);
   }
 
-  //dialog functions
+  /**
+   * Genre info function
+   * dialog
+   * @remarks show specific Genre data
+   * @param movie 
+   * @return MovieInfoComponent + Genre data
+   */
   genreInfo(movie: any): void {
     this.dialog.open(MovieInfoComponent, {
       data: {
@@ -59,6 +79,13 @@ export class MovieCardComponent {
       width: '350px',
     });
   }
+  /**
+   * Director info function
+   * dialog
+   * @remarks show specific Director data
+   * @param movie 
+   * @return MovieInfoComponent + Director data
+   */
   directorInfo(movie: any): void {
     this.dialog.open(MovieInfoComponent, {
       data: {
@@ -68,6 +95,13 @@ export class MovieCardComponent {
       width: '350px',
     });
   }
+  /**
+   * Synopsis info function
+   * dialog
+   * @remarks show specific Synopsis data
+   * @param movie 
+   * @return MovieInfoComponent + Synopsis data
+   */
   synopsisInfo(movie:any): void {
     this.dialog.open(MovieInfoComponent, {
       data: {
@@ -78,7 +112,12 @@ export class MovieCardComponent {
     });
   }
 
-  //working on this function. 
+  /**
+   * favorite movie function
+   * work in progress
+   * @remarks add or remove movies form favoriteMovies array in user object
+   * @param movie 
+   */
   modifyFavoriteMovies(movie: any): void {
     let userInfo = JSON.parse(localStorage.getItem("userInfo") || "");
     let icon = document.getElementById(`${movie._id}-favorite-icon`);
@@ -95,9 +134,6 @@ export class MovieCardComponent {
             console.error(err)
         })
     } else {
-        // icon?.setAttribute("fontIcon", "favorite");
-        // user.favoriteMovies.push(movie._id);
-        // addFavoriteMovie return unauth, debugging
         this.fetchApiData.putFavMovies(movie._id).subscribe(res => {
             icon?.setAttribute("fontIcon", "favorite");
 

@@ -23,25 +23,40 @@ export class UserProfileComponent {
     this.User = this.getUserInfo();
   }
 
-  // Edit profile function
+  /**
+   * Update User dialog
+   * @returns UpdateUserFormComponent 
+   */
   openUpdateUserDialog(): void {
     this.dialog.open(UpdateUserFormComponent, {
       width: '280px',
     });
   }
 
-  // Get user data from local storage
+  /**
+   * Get User data function
+   * @remarks get user data from localStorage and parse JSON
+   * @returns {object} userInfo, all user data
+   */
   getUserInfo() {
     let userInfo = JSON.parse(localStorage.getItem('userInfo') || " ");
     console.log('getUserInfo return ->', userInfo);
     return userInfo
   }
 
-  // Nav functions
+
+  /**
+   * User Logout
+   * Nav Function
+   */
   userLogout(): void {
     this.router.navigate(['welcome']);
     localStorage.removeItem('user');
   }
+  /**
+   * Movie route
+   * Nav function
+   */
   movieRoute(): void {
     this.router.navigate(['movies']);
   }

@@ -22,14 +22,20 @@ export class UpdateUserFormComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    public user = localStorage.getItem('user')
+    public user = localStorage.getItem('user')// is this needed? should it be userInfo?
 
+    /**
+     * Update User function
+     * fetchApiData.putUserUpdate
+     * @remarks update the data stored in DB for this user
+     * @param {object} this.userData
+     * @return {JSON} updated user object
+     */
     updateUser(): void {
       this.fetchApiData.putUserUpdate(this.userData).subscribe((result) => {
 
        this.dialogRef.close(); // This will close the modal on success!
        console.log(result);
-       
        this.snackBar.open('user update successful', 'OK', {
           duration: 2000
        });
