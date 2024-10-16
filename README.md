@@ -6,6 +6,10 @@ Using Angular, build the client-side for an application called myFlix based on
 its existing server-side code (REST API and database), with supporting
 documentation.
 
+## Links
+Deployed using GitHub Pages
+Live site: https://aclantz.github.io/myFlix-Angular-Client/
+
 ## User Stories
 - As a user, I want to be able to receive information on movies, directors, and genres so that I
 can learn more about movies I’ve watched or am interested in.
@@ -50,3 +54,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 ### Further help
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## About
+Hi! this is Alex, I am an emerging web developer and this project was part of my Full-Stack Web Development course with CareerFoundry. If you are curious or have more questions for me check out my portfolio for contact information. https://linktr.ee/alexlantz
